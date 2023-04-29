@@ -91,12 +91,16 @@ was duplicated in id 3, 7, and 9, the returned object should look like:
 
 const findDuplicates = function(climateData) {
     const cityIds = {};
-    climateData.forEach(location => {
-        if (!Object.keys(cityIds).includes(location.city)) {
-            cityIds.city = [];
+    climateData.forEach(obj => {
+        id = obj.id;
+        city = obj.city;
+        if (cityIds[city] === undefined) {
+            cityIds[city] = [id];
+        } else {
+            cityIds[city].push(id);
         }
-        
-    })
+    });
+    return cityIds;
 };
 
 
