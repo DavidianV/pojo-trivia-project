@@ -1,7 +1,7 @@
 /**************DO NOT MODIFY THIS LINE BELOW*****************/
 const climateData = require('../climate-data')
 
-//** climate-data array [object(id), object(city), object(country), object(monthlyAvg) [BUNCHA objects]]
+//** climate-data array [{key(id):num, key(city):string, key(country):string, key(monthlyAvg):{BUNCHA objects}]
 //?--------------------------------------------------------------
 /* 01. `listAllCitiesWithCountries`
 What are all of the cities included in the data set?
@@ -13,6 +13,16 @@ For example, it should return:
 [ "Amsterdam, Netherlands", "Athens, Greece", ...plus 103 more cities ]
 */
 //?--------------------------------------------------------------
+
+// **Jakes Example 1
+// const listAllCitiesWithCountries = (arr) => arr.map(obj => obj.city + ', ' + obj.country);
+// **Jakes Example 2
+// const listAllCitiesWithCountries = arr => {
+//   const newArr = [];
+//   arr.forEach(obj => newArr.push(obj['city] + ', ' + obj['country']));
+//   return newArr;
+// }
+
 // Your code here
 const listAllCitiesWithCountries = (climateData) => {
     const cityCountry = climateData.map(location => location.city + ', ' + location.country );
@@ -31,6 +41,15 @@ For example, it should return:
 */
 
 //?--------------------------------------------------------------
+
+// **Jakes Example 1
+// const listAllUsCities = arr => {
+//   const usCities = arr.filter((obj) => obj.country === 'United States');
+//   return usCities.map(obj => obj.city + ', ' + obj.country);
+//OR return listAllCitiesWithCountries(usCities);
+// };
+
+
 const listAllUsCities = (climateData) => {
     const cityCountry = listAllCitiesWithCountries(climateData);
     return cityCountry.filter(location => location.includes('United States')); 
@@ -51,8 +70,36 @@ was duplicated in id 3, 7, and 9, the returned object should look like:
 { 'Athens: [ 2 ], 'Mexico City': [ 3, 7, 9 ] }
 */
 //?--------------------------------------------------------------
+// final return is {} with City Name : ['Id' key]
+// if City is already in our return object, push 'Id' to its corresponding array of ID's
+// add City : Id
 
-const findDuplicates = function() {};
+// **Jakes Example
+// const findDuplicates = (arr) => {
+//   const trackerObj = {};
+//   arr.forEach(obj => {
+//     const city = obj.city;
+//     if (trckerObj[city] === undefined) {
+//       trackerObj[city] = [id]; 
+//     } else {
+//          trackerObj[city].push(id);
+//       }
+//   });  
+//   return trackerObj;
+// };
+
+
+const findDuplicates = function(climateData) {
+    const cityIds = {};
+    climateData.forEach(location => {
+        if (!Object.keys(cityIds).includes(location.city)) {
+            cityIds.city = [];
+        }
+        
+    })
+};
+
+
 // Your code here
 
 
