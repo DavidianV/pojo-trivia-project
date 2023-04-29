@@ -18,8 +18,7 @@ const listAllCitiesWithCountries = (climateData) => {
     const cityCountry = climateData.map(location => location.city + ', ' + location.country );
     return cityCountry;
 }
-
-
+//[City, Country]
 //?--------------------------------------------------------------
 /* 02. `listAllUsCities`
 What are all of the United States cities included in the data set?
@@ -30,9 +29,13 @@ the United States cities in the data set, formatted in "city, country" format.
 For example, it should return:
 [ 'Atlanta GA, United States', 'Austin TX, United States', ...plus more cities ]
 */
-//?--------------------------------------------------------------
-const listAllUsCities = function() {}; 
 
+//?--------------------------------------------------------------
+const listAllUsCities = (climateData) => {
+    const cityCountry = listAllCitiesWithCountries(climateData);
+    return cityCountry.filter(location => location.includes('United States')); 
+}
+//cityCountry.filter countries === 'Unites States'
 // Your code here
 
 
